@@ -23,6 +23,7 @@ module InitialEvents
       cfg[:event_types].each do |type|
         event = {
           "event_type" => type,
+          "outcome" => cfg[:outcome],
           "timestamp" => time_now,
           "linked_records" => [
                                {
