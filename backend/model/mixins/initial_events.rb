@@ -32,7 +32,7 @@ module InitialEvents
                                },
                               ],
           "linked_agents" => [
-                              {"role" => cfg[:agent_role], "ref" => agent_uri}
+                              {"role" => cfg[:agent_role], "ref" => cfg[:agent_uri]}
                              ]
         }
 
@@ -40,12 +40,6 @@ module InitialEvents
                                :system_generated => true)
       end
 
-    end
-
-
-    def agent_uri
-      AppConfig[:accession_events][:agent_uri] ||= 
-        JSONModel::JSONModel(:agent_person).uri_for(User[:username => AppConfig[:accession_events][:agent]].agent_record_id)
     end
 
   end
