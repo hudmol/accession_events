@@ -18,13 +18,13 @@ module InitialEvents
 
     def create_events_for(obj)
       cfg = AppConfig[:accession_events]
-      time_now = Time.now.utc.iso8601
+      time_now = Time.now
 
       cfg[:event_types].each do |type|
         event = {
           "event_type" => type,
           "outcome" => cfg[:outcome],
-          "timestamp" => time_now,
+          "date" => {"date_type" => "single", "label" => "event", "begin" => time_now.strftime("%Y-%m-%d")},
           "linked_records" => [
                                {
                                  "role" => cfg[:accession_role],
